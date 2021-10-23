@@ -456,6 +456,7 @@ int arcade_printGame(Arcade* list)
 	return ret;
 }
 
+
 int arcade_printGameList(Arcade* list, int len)
 {
 	int ret=-1;
