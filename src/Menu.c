@@ -34,6 +34,7 @@ int menu(int* res)
 											"\t6).Eliminar arcade\n\n"
 											"\t7).Imprimir arcades\n\n"
 											"\t8).Imprimir juegos\n\n"
+											"\t9).Informes\n\n"
 											"\t0).Salir\n\n--------------> ","Error!")==0)
 		{
 			if(bufferResponse>=0 && bufferResponse<9)
@@ -225,6 +226,9 @@ int menu_resolve(int* res, Room* roomList, int lenRoom, Arcade* arcadeList, int 
 								arcade_printGameList(arcadeList,lenArcade);
 							}
 						}
+						break;
+					case 9:
+						// informes
 						break;
 					}
 	}
