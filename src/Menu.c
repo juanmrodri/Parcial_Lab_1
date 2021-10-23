@@ -56,6 +56,7 @@ int menu(int* res)
 
 int menu_resolve(int* res, Room* roomList, int lenRoom, Arcade* arcadeList, int lenArcade)
 {
+
 	int ret=-1;
 	int findIdPos;
 	int bufferIdResponse;
