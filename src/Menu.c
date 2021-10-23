@@ -59,8 +59,8 @@ int menu_resolve(int* res, Room* roomList, int lenRoom, Arcade* arcadeList, int 
 {
 	int ret=-1;
 	int findIdPos;
+	int bufferResponse;
 	int bufferIdResponse;
-	int bufferIdResponseSupport;
 	int auxPosIdRoomSelected;
 	if(res!=NULL)
 	{
@@ -93,9 +93,9 @@ int menu_resolve(int* res, Room* roomList, int lenRoom, Arcade* arcadeList, int 
 							if(arcade_searchRoomId(arcadeList,lenArcade,bufferIdResponse)!=0)
 							{
 								printf("\n\tEl salon que eligio tiene: %d arcade(s)\n\n",arcade_searchRoomId(arcadeList,lenArcade,bufferIdResponse));
-								if(pedirIntAUsuario(&bufferIdResponseSupport, 0, 1, 2, "\n\t\tDesea continuar(0 si- 1 no)? ", "\n\tSe produjo un error!\n")==0)
+								if(pedirIntAUsuario(&bufferResponse, 0, 1, 2, "\n\t\tDesea continuar(0 si- 1 no)? ", "\n\tSe produjo un error!\n")==0)
 								{
-									if(bufferIdResponseSupport==0)
+									if(bufferResponse==0)
 									{
 										room_delete(roomList,lenRoom,bufferIdResponse);
 									}
