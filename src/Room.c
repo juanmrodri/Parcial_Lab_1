@@ -237,7 +237,7 @@ int room_delete(Room* list, int len)
 				{
 					if(list[i].id==bufferId)
 					{
-						printf("\tUsted esta por dar de baja:\t%s: %s localizado en %s\n",auxTypePrint,list[i].name,list[i].address);
+						printf("\n\tUsted esta por dar de baja el salon\n\n\t| %s: %s | localizado en %s\n",auxTypePrint,list[i].name,list[i].address);
 						if(pedirIntAUsuario(&bufferResponse, 0, 1, 2, "\n\t\tDesea continuar(0 si- 1 no)? ", "\n\tSe produjo un error!\n")==0)
 						{
 							if(bufferResponse==0)
@@ -249,6 +249,7 @@ int room_delete(Room* list, int len)
 							else
 							{
 								printf("\n\tNo se procedera con la baja\n\n");
+								break;
 							}
 						}
 						else

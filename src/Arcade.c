@@ -181,7 +181,7 @@ int arcade_add(Arcade* list, int len, int idRoom)
 	{
 		if(pedirTextoUsuario(origin, 16, 2, "\n\tPor favor ingrese la nacionalid: ", "\n\tSe produjo un error!\n")==0)
 		{
-			if(pedirIntAUsuario(&soundSystem, 0, 1, 2, "\n\tPor favor ingrese el tipo de sonido (2=MONO - 3=ESTEREO): ", "\n\tSe produjo un error!\n")==0)
+			if(pedirIntAUsuario(&soundSystem, 2, 3, 2, "\n\tPor favor ingrese el tipo de sonido (2=MONO - 3=ESTEREO): ", "\n\tSe produjo un error!\n")==0)
 			{
 				if(pedirIntAUsuario(&players, 1, 8, 2, "\n\tPor favor ingrese la cantidad de jugadores que pueden jugar: ", "\n\tSe produjo un error!\n")==0)
 				{
@@ -247,11 +247,11 @@ int arcade_delete(Arcade* list, int len)
 
 		if(list->soundSystem==0)
 		{
-			strncpy(auxSoundSystemPrint,"Shopping",sizeof(auxSoundSystemPrint));
+			strncpy(auxSoundSystemPrint,"Mono",sizeof(auxSoundSystemPrint));
 		}
 		else
 		{
-			strncpy(auxSoundSystemPrint,"Local",sizeof(auxSoundSystemPrint));
+			strncpy(auxSoundSystemPrint,"Estereo",sizeof(auxSoundSystemPrint));
 		}
 
 		if(list!=NULL && len>0)
@@ -262,7 +262,7 @@ int arcade_delete(Arcade* list, int len)
 				{
 					if(list[i].id==bufferId)
 					{
-						printf("\tUsted esta por dar de baja el arcade(id): %d con sistema de sonido: %s con el juego: %s\n",list[i].id,auxSoundSystemPrint,list[i].gameName);
+						printf("\n\tUsted esta por dar de baja el arcade\n\n\t| (id): %d | con sistema de sonido: %s | con el juego: %s\n",list[i].id,auxSoundSystemPrint,list[i].gameName);
 						if(pedirIntAUsuario(&bufferResponse, 0, 1, 2, "\n\t\tDesea continuar(0 si- 1 no)? ", "\n\tSe produjo un error!\n")==0)
 						{
 							if(bufferResponse==0)
@@ -365,6 +365,10 @@ int arcade_mod(Arcade* list, int len, int id)
 						}
 
 					}
+					else
+					{
+						printf("\n\tNo se continuara con la modificacion\n\n");
+					}
 				}
 				else
 				{
@@ -450,12 +454,11 @@ int arcade_printGame(Arcade* list)
 	int ret=-1;
 	if(list!=NULL && list->isEmpty==OCCUP)
 	{
-		printf("\n\t-: %s\n",list->gameName);
+			printf("\n\t-> %s\n\n",list->gameName);
 	}
 
 	return ret;
 }
-
 
 int arcade_printGameList(Arcade* list, int len)
 {
@@ -466,7 +469,10 @@ int arcade_printGameList(Arcade* list, int len)
 	{
 		for(i=0;i<len;i++)
 		{
-			arcade_printGame(&list[i]);
+			if(strncmp(list[i].gameName,list[i+1].gameName,strlen(list[i].gameName))!=0)
+			{
+				arcade_printGame(&list[i]);
+			}
 		}
 	}
 

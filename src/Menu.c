@@ -161,7 +161,7 @@ int menu_resolve(int* res, Room* roomList, int lenRoom, Arcade* arcadeList, int 
 									}
 									else
 									{
-										printf("\n\tSe produjo un error al buscar la posicion!\n\n");
+										printf("\n\tSe produjo un error al buscar el arcade!\n\n");
 									}
 
 								}
@@ -169,12 +169,62 @@ int menu_resolve(int* res, Room* roomList, int lenRoom, Arcade* arcadeList, int 
 						break;
 					case 6:
 						// eliminar arcade
+						if(room_countEmpty(roomList,lenRoom)==lenRoom)
+						{
+							printf("\n\tNo existe ningun salon ingresado hasta el momento, deberia existir por lo menos un salor y este tener arcades\n\n");
+						}
+						else
+						{
+							if(arcade_countEmpty(arcadeList,lenArcade)==lenRoom)
+							{
+								printf("\n\tNo existe ningun arcade ingresado por el momento\n\n");
+							}
+							else
+							{
+								printf("\n\tEliminar arcade\n\n");
+								arcade_printArcades(arcadeList,lenArcade);
+								arcade_delete(arcadeList,lenArcade);
+							}
+						}
+
 						break;
 					case 7:
 						// imprimir arcades
+						if(room_countEmpty(roomList,lenRoom)==lenRoom)
+						{
+							printf("\n\tNo existe ningun salon ingresado hasta el momento, deberia existir por lo menos un salor y este tener arcades\n\n");
+						}
+						else
+						{
+							if(arcade_countEmpty(arcadeList,lenArcade)==lenRoom)
+							{
+								printf("\n\tNo existe ningun arcade ingresado por el momento\n\n");
+							}
+							else
+							{
+								printf("\n\tArcades ingresados\n\n");
+								arcade_printArcades(arcadeList,lenArcade);
+							}
+						}
 						break;
 					case 8:
 						// imprimir juegos
+						if(room_countEmpty(roomList,lenRoom)==lenRoom)
+						{
+							printf("\n\tNo existe ningun salon ingresado hasta el momento, deberia existir por lo menos un salor y este tener arcades\n\n");
+						}
+						else
+						{
+							if(arcade_countEmpty(arcadeList,lenArcade)==lenRoom)
+							{
+								printf("\n\tNo existe ningun arcade ingresado por el momento\n\n");
+							}
+							else
+							{
+								printf("\n\tJuegos que contienen los arcades ingresados\n\n");
+								arcade_printGameList(arcadeList,lenArcade);
+							}
+						}
 						break;
 					}
 	}
@@ -207,7 +257,7 @@ int menu_askForId(int* res, int idEval)
 		{
 			if(idEval==1)
 			{
-				if(pedirIntAUsuario(&bufferRes, 1, ARCADE_LEN, 2, "\n\tElija el Id del arcade que se quiere modificar: ", "\n\tError!!!\n")==0)
+				if(pedirIntAUsuario(&bufferRes, 1, ARCADE_LEN, 2, "\n\tElija el Id del arcade: ", "\n\tError!!!\n")==0)
 					{
 						ret=0;
 						*res=bufferRes;
