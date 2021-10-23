@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Inputs.h"
+#include "Room.h"
 
 typedef struct
 {
@@ -41,6 +42,8 @@ int Arcade_findArcadeById(Arcade* list, int len, int id);
 int arcade_countEmpty(Arcade* list, int len);
 
 int arcade_add(Arcade* list, int len, int idRoom);
+
+int arcade_searchRoomId(Arcade* list, int len, int res);
 
 int arcade_delete(Arcade* list, int len);
 

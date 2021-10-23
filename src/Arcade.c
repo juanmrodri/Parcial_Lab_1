@@ -229,6 +229,33 @@ int arcade_add(Arcade* list, int len, int idRoom)
 	return ret;
 }
 
+/** \brief change the value of isEmpty to empty
+ *
+ * \param list Room* Pointer to array of roomList
+ * \param len int Array length
+ * \param res int id selected by user to search for
+ * \return int Return (-1) if Error [Invalid length or NULL pointer] - (0) if Ok
+ *
+ */
+int arcade_searchRoomId(Arcade* list, int len, int res)
+{
+	int idCount=0;
+	int i;
+
+	if(list!=NULL && len>0 && res!=0)
+	{
+		for(i=0;i<len;i++)
+		{
+			if(list[i].idRoom==res)
+			{
+				idCount++;
+			}
+		}
+	}
+
+	return idCount;
+}
+
 
 /** \brief change the value of isEmpty to empty
  *

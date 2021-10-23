@@ -212,11 +212,11 @@ int room_add(Room* list, int len)
  * \return int Return (-1) if Error [Invalid length or NULL pointer] - (0) if Ok
  *
  */
-int room_delete(Room* list, int len)
+int room_delete(Room* list, int len, int res)
 {
 	int ret=-1;
 	int i;
-	int bufferId;
+	int bufferId = res;
 	int bufferResponse;
 	char auxTypePrint[32];
 
@@ -231,7 +231,7 @@ int room_delete(Room* list, int len)
 
 		if(list!=NULL && len>0)
 		{
-			if(pedirIntAUsuario(&bufferId, 1, len, 2, "\n\tPor favor ingrese el id del salon que desea eliminar: ", "\n\tSe produjo un error!\n")==0)
+			if(bufferId>0)
 			{
 				for(i=0;i<len;i++)
 				{

@@ -9,6 +9,7 @@
 #include "Room.h"
 #include "Arcade.h"
 #include "Inputs.h"
+#include "Report.h"
 #define ROOM_LEN 15
 #define ARCADE_LEN 15
 
@@ -59,6 +60,7 @@ int menu_resolve(int* res, Room* roomList, int lenRoom, Arcade* arcadeList, int 
 	int ret=-1;
 	int findIdPos;
 	int bufferIdResponse;
+	int bufferIdResponseSupport;
 	int auxPosIdRoomSelected;
 	if(res!=NULL)
 	{
@@ -87,7 +89,30 @@ int menu_resolve(int* res, Room* roomList, int lenRoom, Arcade* arcadeList, int 
 						{
 							printf("\n\tEliminar salon\n\n");
 							room_printRooms(roomList,lenRoom);
-							room_delete(roomList,lenRoom);
+							menu_askForId(&bufferIdResponse, 0);
+							if(arcade_searchRoomId(arcadeList,lenArcade,bufferIdResponse)!=0)
+							{
+								printf("\n\tEl salon que eligio tiene: %d arcade(s)\n\n",arcade_searchRoomId(arcadeList,lenArcade,bufferIdResponse));
+								if(pedirIntAUsuario(&bufferIdResponseSupport, 0, 1, 2, "\n\t\tDesea continuar(0 si- 1 no)? ", "\n\tSe produjo un error!\n")==0)
+								{
+									if(bufferIdResponseSupport==0)
+									{
+										room_delete(roomList,lenRoom,bufferIdResponse);
+									}
+									else
+									{
+										printf("\n\tNo se ha eliminado el salon\n\n");
+									}
+								}
+								else
+								{
+									printf("\n\tNo se ha eliminado el salon, se produjo un error al leer la respuesta\n\n");
+								}
+							}
+							else
+							{
+								room_delete(roomList,lenRoom,bufferIdResponse);
+							}
 						}
 						break;
 					case 3:
@@ -251,7 +276,7 @@ int menu_askForId(int* res, int idEval)
 	{
 		if(idEval==0)
 		{
-			if(pedirIntAUsuario(&bufferRes, 1, ROOM_LEN, 2, "\n\tElija el Id del salon en donde se ubicara el Arcade: ", "\n\tError!!!\n")==0)
+			if(pedirIntAUsuario(&bufferRes, 1, ROOM_LEN, 2, "\n\tElija el Id del salon: ", "\n\tError!!!\n")==0)
 					{
 						ret=0;
 						*res=bufferRes;

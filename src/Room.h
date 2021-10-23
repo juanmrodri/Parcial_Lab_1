@@ -41,7 +41,7 @@ int room_countEmpty(Room* list, int len);
 
 int room_add(Room* list, int len);
 
-int room_delete(Room* list, int len);
+int room_delete(Room* list, int len, int res);
 
 int room_printRoom(Room* list);
 
