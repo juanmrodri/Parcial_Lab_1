@@ -43,8 +43,11 @@ int main(void) {
 
 	force_arcade_add(arcadeList, ARCADE_LEN, 0, "Japan",0, 4, 120, 1, "Sunset Riders");
 	force_arcade_add(arcadeList, ARCADE_LEN, 1, "USA",0, 8, 250, 2, "Daytona USA");
-	force_arcade_add(arcadeList, ARCADE_LEN, 2, "USA",1, 2, 100, 8, "Mortal Kombat");
-	force_arcade_add(arcadeList, ARCADE_LEN, 3, "Japan",1, 4, 90, 9, "Pacman");
+	force_arcade_add(arcadeList, ARCADE_LEN, 2, "USA",0, 8, 250, 2, "Daytona USA");
+	force_arcade_add(arcadeList, ARCADE_LEN, 3, "USA",0, 8, 250, 2, "Daytona USA");
+	force_arcade_add(arcadeList, ARCADE_LEN, 4, "USA",0, 8, 250, 2, "Daytona USA");
+	force_arcade_add(arcadeList, ARCADE_LEN, 5, "USA",1, 2, 100, 8, "Mortal Kombat");
+	force_arcade_add(arcadeList, ARCADE_LEN, 6, "Japan",1, 4, 90, 9, "Pacman");
 
 	/*
 	  for(int i=0;i<ARCADE_LEN;i++)
