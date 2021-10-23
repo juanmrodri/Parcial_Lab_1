@@ -11,4 +11,4 @@ Parte 2 del parcial<br>
 
 Vista previa del archivo .exe (solo las funciones basicas)
 
-![ambpage](https://user-images.githubusercontent.com/21976783/138567422-81264b4b-6463-4858-9aa6-92e268c601f0.png)
+![ambpage](https://user-images.githubusercontent.com/21976783/138567575-a9e42a55-ba4d-4d11-a1d1-c97d3ba7b011.png)
