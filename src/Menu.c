@@ -26,7 +26,7 @@ int menu(int* res)
 	int bufferResponse;
 	if(res!=NULL)
 	{
-		if(pedirIntAUsuario(&bufferResponse, 0, 8, 2, "Que desea realizar:\n-------------------\n\n"
+		if(pedirIntAUsuario(&bufferResponse, 0, 9, 2, "Que desea realizar:\n-------------------\n\n"
 											"\t1).Alta de Salon\n\n"
 											"\t2).Eliminar Salon\n\n"
 											"\t3).Imprimir salones\n\n"
@@ -38,7 +38,7 @@ int menu(int* res)
 											"\t9).Informes\n\n"
 											"\t0).Salir\n\n--------------> ","Error!")==0)
 		{
-			if(bufferResponse>=0 && bufferResponse<9)
+			if(bufferResponse>=0 && bufferResponse<10)
 			{
 				*res=bufferResponse;
 			}
@@ -61,6 +61,7 @@ int menu_resolve(int* res, Room* roomList, int lenRoom, Arcade* arcadeList, int 
 	int findIdPos;
 	int bufferResponse;
 	int bufferIdResponse;
+	char bufferReportResponse;
 	int auxPosIdRoomSelected;
 	if(res!=NULL)
 	{
@@ -254,6 +255,62 @@ int menu_resolve(int* res, Room* roomList, int lenRoom, Arcade* arcadeList, int 
 						break;
 					case 9:
 						// informes
+						if(room_countEmpty(roomList,lenRoom)==lenRoom)
+						{
+							printf("\n\tNo existe ningun salon ingresado hasta el momento, deberia existir por lo menos un salor y este tener arcades\n\n");
+						}
+						else
+							{
+								if(arcade_countEmpty(arcadeList,lenArcade)==lenRoom)
+								{
+									printf("\n\tNo existe ningun arcade ingresado por el momento\n\n");
+								}
+								else
+								{
+									do
+									{
+									if(pedirCharUsuario(&bufferReportResponse, 97, 104, 2, "\n\t\tInformes:\n-------------------\n\n"
+										"\t\ta).Salones con mas de 4 arcades\n\n"
+										"\t\tb).Arcades con mas de 2 jugadores\n\n"
+										"\t\tc).Info de salon\n\n"
+										"\t\td).Lista de arcades en salon (id)\n\n"
+										"\t\te).Salon con mas arcades\n\n"
+										"\t\tf).Recaudacion maxima de un salon (id)\n\n"
+										"\t\tg).Ingresar nombre de juego para ver cuantos arcades lo contienen\n\n"
+										"\t\th).Salir\n\n--------------> ","Error!")==0)
+										{
+											if(bufferReportResponse>=97 && bufferReportResponse<=104)
+											{
+												switch(bufferReportResponse)
+												{
+												case 'a':
+													printf("\n\t\tSalones con mas de 4 arcades:\n\n");
+													report_roomMoreThanFourArcades(roomList, lenRoom, arcadeList, lenArcade);
+													break;
+												case 'b':
+													printf("\n\tArcades para mas de 2 jugadores: b\n\n");
+													break;
+												case 'c':
+													printf("\n\tOpcion c\n\n");
+													break;
+												case 'd':
+													printf("\n\tOpcion d\n\n");
+													break;
+												case 'e':
+													printf("\n\tOpcion e\n\n");
+													break;
+												case 'f':
+													printf("\n\tOpcion f\n\n");
+													break;
+												case 'g':
+													printf("\n\tOpcion g\n\n");
+													break;
+												}
+											}
+										}
+									}while(bufferReportResponse!=104);
+								}
+							}
 						break;
 					}
 	}

@@ -40,14 +40,21 @@ int main(void) {
 	force_room_add(roomList, ROOM_LEN, 7, "SaNlorenzolandia", "Unicenter\n", 1);
 	force_room_add(roomList, ROOM_LEN, 8, "Sacoa", "Av. Livertador y Juan b. Justo\n", 0);
 	force_room_add(roomList, ROOM_LEN, 9, "Parque de la costa", "Av. Figueroa Alcorta\n", 0);
+	force_room_add(roomList, ROOM_LEN, 10, "Parque plutonio", "Av. Figueroa Alcorta\n", 0);
 
 	force_arcade_add(arcadeList, ARCADE_LEN, 0, "Japan",0, 4, 120, 1, "Sunset Riders");
 	force_arcade_add(arcadeList, ARCADE_LEN, 1, "USA",0, 8, 250, 2, "Daytona USA");
 	force_arcade_add(arcadeList, ARCADE_LEN, 2, "USA",0, 8, 250, 2, "Daytona USA");
 	force_arcade_add(arcadeList, ARCADE_LEN, 3, "USA",0, 8, 250, 2, "Daytona USA");
 	force_arcade_add(arcadeList, ARCADE_LEN, 4, "USA",0, 8, 250, 2, "Daytona USA");
-	force_arcade_add(arcadeList, ARCADE_LEN, 5, "USA",1, 2, 100, 8, "Mortal Kombat");
-	force_arcade_add(arcadeList, ARCADE_LEN, 6, "Japan",1, 4, 90, 9, "Pacman");
+	force_arcade_add(arcadeList, ARCADE_LEN, 5, "USA",0, 8, 250, 2, "Daytona USA");
+	force_arcade_add(arcadeList, ARCADE_LEN, 6, "USA",1, 2, 100, 8, "Mortal Kombat");
+	force_arcade_add(arcadeList, ARCADE_LEN, 7, "Japan",1, 1, 90, 9, "Pacman");
+	force_arcade_add(arcadeList, ARCADE_LEN, 8, "Japan",1, 1, 90, 9, "Pacman");
+	force_arcade_add(arcadeList, ARCADE_LEN, 9, "Japan",1, 1, 90, 9, "Pacman");
+	force_arcade_add(arcadeList, ARCADE_LEN, 10, "Japan",1, 1, 90, 9, "Pacman");
+	force_arcade_add(arcadeList, ARCADE_LEN, 11, "Japan",1, 1, 90, 9, "Pacman");
+	force_arcade_add(arcadeList, ARCADE_LEN, 12, "Japan",1, 1, 90, 9, "Pacman");
 
 	/*
 	  for(int i=0;i<ARCADE_LEN;i++)

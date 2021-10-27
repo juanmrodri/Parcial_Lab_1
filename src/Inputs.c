@@ -72,7 +72,6 @@ int pedirFloatAUsuario(float* pResultado, float min, float max, int reintentos, 
 											}
 											else
 												{
-													retorno = -2;
 													printf("%s\n", textoError);
 												}
 								}
@@ -83,7 +82,6 @@ int pedirFloatAUsuario(float* pResultado, float min, float max, int reintentos, 
 					}
 					else
 						{
-							retorno = -2;
 							printf("%s\n", textoError);
 						}
 		}
@@ -123,7 +121,6 @@ int pedirIntAUsuario(int* pResultado, int min, int max, int reintentos, char* va
 								}
 								else
 									{
-										retorno = -2;
 										printf("%s\n", textoError);
 									}
 					}
@@ -146,7 +143,7 @@ int pedirIntAUsuario(int* pResultado, int min, int max, int reintentos, char* va
 int pedirCharUsuario(char* pResultado, char min, char max, int reintentos, char* variableTexto, char* textoError) // el min y el max puede ser int tambien
 {
 		int retorno=-1;
-		char aux;
+		int len=2; // el len seria 2, ya que hay que tener en cuenta el \0, sino esta funcion entraria en un bucle infinito
 		int i;
 		if(pResultado != NULL && min<max && reintentos >=0 && variableTexto != NULL && textoError != NULL)
 		{
@@ -154,19 +151,23 @@ int pedirCharUsuario(char* pResultado, char min, char max, int reintentos, char*
 			{
 							printf("%s",variableTexto);
 							fflush(stdin);
-							scanf("%c", &aux);
-
-							if (aux>=min && aux<=max)
+							if(myGets(pResultado,len)==0)
 							{
-								retorno = 0; // OK
-								*pResultado=aux;
-								break;
+								if(isdigit(*pResultado)==0)
+								{
+									retorno=0;
+									break;
+								}
+								else
+								{
+									printf("%s", textoError);
+								}
 							}
 							else
 							{
-								retorno = -2; // ahora -2 significa que hay un error
 								printf("%s", textoError);
 							}
+
 			}
 		}
 		return retorno;
